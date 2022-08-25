@@ -19,10 +19,9 @@ List Images=[
   "illustration.png",
   "illustration2.png",
   "illustration3.png",
+  "illustration2.png",
 ];
-
-
-  @override
+@override
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -33,11 +32,11 @@ List Images=[
         controller: controller,
         onPageChanged: (index) {
           setState(() =>
-          isLastPage = index == 2
+          isLastPage = index == 3
 
           );
         },
-        children:List.generate(3, (index) => Container(
+        children:List.generate(4, (index) => Container(
             child:
             Container(
               margin: EdgeInsets.only(top: 90),
@@ -46,19 +45,66 @@ List Images=[
                   Image.asset("assets/"+Images[index],
                     fit: BoxFit.cover,width: double.infinity,),
                   SizedBox(height: 20,),
-                  Text("Stay Safe ",style: TextStyle(
-                      color: Colors.teal.shade700,
+
+
+                      index==0? Text("Stay Home ",style: TextStyle(
+                      color:
+                      index==0? Colors.blue:
+                      index==1? Colors.teal.shade700:
+                      index==2? Colors.blueAccent:
+                      index==3? Colors.teal.shade700:
+                      Colors.blueAccent,
+
                       fontSize: 32,
                       fontWeight: FontWeight.bold
-                  ),
-                  ),
+                  )):
+
+                      index==1? Text("Stay Safe ",style: TextStyle(
+                          color: index==0? Colors.blue:
+                          index==1? Colors.teal.shade700:
+                          index==2? Colors.blueAccent:
+                          index==3? Colors.teal.shade700:
+                          Colors.blueAccent,
+
+
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold
+                      )):
+
+                      index==2? Text("Stay Happy ",style: TextStyle(
+                          color: index==0? Colors.blue:
+                          index==1? Colors.teal.shade700:
+                          index==2? Colors.blueAccent:
+                          index==3? Colors.teal.shade700:
+                          Colors.blueAccent,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold
+                      )):
+                          index==3? Text("Welcome To HomePage ",style: TextStyle(
+                          color:
+                          index==0? Colors.blue:
+                          index==1? Colors.teal.shade700:
+                          index==2? Colors.blueAccent:
+                          index==3? Colors.teal.shade700:
+                          Colors.blueAccent,
+                        fontSize: 25
+                      )):
+                              Container(),
+
                   SizedBox(height: 50,),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       "Stay-at-home directives are issued to protect you, your family, and the public at large. Do your part by staying home. Now is not the time for a play date for kids, not the time for a dinner for adults, and not the time for a personal visit to the elderly. Spring break plans should be cancelled, birthday parties should be postponed, extended family dinners should be suspended. If the NBA can cancel their basketball games, you can cancel your in-person social calendar. ",
                       style: TextStyle(
-                        color: Colors.teal,
+                        color:
+                        index==0? Colors.blue:
+                        index==1? Colors.teal.shade700:
+                        index==2? Colors.blueAccent:
+                        index==3? Colors.teal.shade700:
+                        Colors.blueAccent,
+
+
                       ),
                     ),
                   )
@@ -101,13 +147,13 @@ List Images=[
           children: [
             TextButton(
                 onPressed: (){
-controller.jumpToPage(2);
+controller.jumpToPage(3);
                 },
                 child: Text("Skip")),
 
             SmoothPageIndicator(
                 controller: controller,
-                count: 3,
+                count: 4,
               effect: WormEffect(
                 spacing: 16,
                 dotColor: Colors.black26,
